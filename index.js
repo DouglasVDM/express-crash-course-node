@@ -9,11 +9,17 @@ const PORT = process.env.PORT || 5000;
 
 
 // initialise middleware
-app.use(logger);
+// app.use(logger);
+
 
 // get all members as json
 app.get('/api/members', (req, res) => {
   res.json(members)
+});
+
+// get single member
+app.get('/api/members/:id', (req, res) => {
+  res.json(members.filter(member => member.id === parseInt(req.params.id)));
 });
 
 // set static folder
