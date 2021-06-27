@@ -7,11 +7,11 @@ const PORT = process.env.PORT || 5000;
 
 
 const logger = (req, res, next) => {
-  console.log('Hello');
+  console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}`);
   next();
 }
 
-// init middleware
+// initialise middleware
 app.use(logger);
 
 // get all members as json
