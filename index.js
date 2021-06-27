@@ -1,31 +1,20 @@
+const { log } = require('console');
 const express = require('express');
 const path = require('path');
+const members = require('./Members');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 
+const logger = (req, res, next) => {
+  console.log('Hello');
+  next();
+}
 
-const members = [
-  {
-    id: 1,
-    name: 'Morem Hpsum',
-    email: 'moremhpsum2gmail.com',
-    status: 'active'
-  },
-  {
-    id: 2,
-    name: 'Lorem Ipsum',
-    email: 'loremipsum2gmail.com',
-    status: 'active'
-  },
-  {
-    id: 3,
-    name: 'Borem Jpsum',
-    email: 'boremjpsum2gmail.com',
-    status: 'active'
-  }
-];
+// init middleware
+app.use(logger);
 
+// get all members as json
 app.get('/api/members', (req, res) => {
   res.json(members)
 });
