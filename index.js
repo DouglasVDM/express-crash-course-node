@@ -19,6 +19,9 @@ app.set('view engine', 'handlebars');
 app.use(express.json());  //  handle raw json
 app.use(express.urlencoded({ extended: false })); //  handle forms submissions
 
+// Homepage Route
+app.get('/', (req, res) => { res.render('index') });
+
 // set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
