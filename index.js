@@ -10,6 +10,10 @@ const PORT = process.env.PORT || 5000;
 // initialise middleware
 // app.use(logger);
 
+// body parser middleware
+app.use(express.json());  //  handle raw json
+app.use(express.urlencoded({ extended: false })); //  handle forms submissions
+
 // set static folder
 app.use(express.static(path.join(__dirname, 'public')));
 
