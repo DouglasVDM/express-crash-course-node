@@ -3,6 +3,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const logger = require('./middleware/logger');
+const members = require('./Members');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -21,7 +22,7 @@ app.use(express.urlencoded({ extended: false })); //  handle forms submissions
 
 // Homepage Route
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Member App' });
+  res.render('index', { title: 'Member App', members });
 });
 
 // set static folder
