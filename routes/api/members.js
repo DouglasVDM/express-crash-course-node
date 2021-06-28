@@ -21,7 +21,18 @@ router.get('/:id', (req, res) => {
 
 // create member
 router.post('/', (req, res) => {
-  res.send(req.body); //  this will show in postman post request
+  const newMember = {
+    id: uuid.v4(),
+    name: req.body.name,
+    email: req.body.email,
+    status: 'active'
+  }
+
+  if (!newMember.name || !newMember.email) {
+    res.status(400).json({ msg: 'Please include a name and email' });
+  } //  check if name and email is included
+  members.push(newMember);  //  add newMember to members
+  res.json(members);  //  return all members
 });
 
 module.exports = router;
