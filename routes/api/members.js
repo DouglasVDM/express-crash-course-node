@@ -32,8 +32,8 @@ router.post('/', (req, res) => {
     res.status(400).json({ msg: 'Please include a name and email' });
   } //  check if name and email is included
   members.push(newMember);  //  add newMember to members
-  // res.json(members);  //  return all members
-  res.redirect('/');  //  redirect to same page
+  res.json(members);  //  return all members
+  // res.redirect('/');  //  redirect to same page
 });
 
 // update a member
